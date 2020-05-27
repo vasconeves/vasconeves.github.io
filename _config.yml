@@ -2,7 +2,7 @@
 # General Site Settings
 title: John Deo
 description: "I am an aspiring Data Scientist building up my protfolio which focuses on interesting and impactful projects that I have undertaken recently."
-baseurl: "/dsi-portfolio" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
