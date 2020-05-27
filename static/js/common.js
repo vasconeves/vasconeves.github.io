@@ -2,37 +2,6 @@ $(function() {
   'use strict';
 
   /* =======================
-  // Toggle Menu and Search
-  ======================= */
-  var $menuOpenButton = $(".menu-button"),
-      $menuCloseButton = $(".menu-close"),
-      $navMenu = $(".nav-menu");
-
-  $(window).on("resize", function () {
-    var e = $(this);
-    if (e.width() >= 991) {
-      $navMenu.removeClass("active"); // Remove class - "active" if width window more than 991px
-    }
-  });
-
-  $menuOpenButton.on("click", function() {
-    openMenu();
-  });
-
-  $menuCloseButton.on("click", function() {
-    closeMenu();
-  });
-
-
-  function openMenu() {
-    $navMenu.addClass("active");
-  }
-
-  function closeMenu() {
-    $navMenu.removeClass("active");
-  }
-
-  /* =======================
   // Reveal Image
   ======================= */
   var wh = window.innerHeight;
