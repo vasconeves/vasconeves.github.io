@@ -15,16 +15,15 @@
 
 .header-avatar {
   display: block;
-  margin: 0 20px 0 50%;
+  margin: auto;
   border-radius: 100%;
   width: 100px;
   overflow: hidden;
   margin-bottom: 20px;
-  border: 4px solid transparent;
-  background: linear-gradient(60deg, $primary-color 10%, #ce00 100%);
+  border: 4px solid $white;
 
   @media only screen and (min-width: 768px) {
-    width: 150px;
+    width: 200px;
     margin-bottom: 25px;
   }
 
