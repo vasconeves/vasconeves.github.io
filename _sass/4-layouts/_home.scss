@@ -71,9 +71,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 30px;
     .item{
       list-style: none;
-      width: calc(100% / 4);
       .item-link{
         color: $light-white;
         font-size: 18px;
@@ -331,6 +331,7 @@
 }
 .menu-links {
   .list-reset {
+  margin-top: 20px;
     .item{
       list-style: none;
       width: calc(100% / 2);
