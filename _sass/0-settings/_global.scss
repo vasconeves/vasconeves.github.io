@@ -11,3 +11,10 @@ $global-transition: .35s;
 $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
 $type-size: 0.75em !default;
 $border-radius: 4px !default;
+
+@font-face {
+  font-family: 'Futura Md BT';  
+  src: url("../fonts/futura medium bt.tff") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
