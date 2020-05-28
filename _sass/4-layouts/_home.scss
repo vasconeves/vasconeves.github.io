@@ -2,9 +2,6 @@
 .header {
   margin-bottom: 50px;
   background: $black;
-}
-
-.header {
   padding: 40px 0;
 }
 
@@ -23,6 +20,8 @@
   width: 100px;
   overflow: hidden;
   margin-bottom: 20px;
+  border: 4px solid transparent;
+  background: linear-gradient(60deg, $primary-color 10%, #ce00 100%);
 
   @media only screen and (min-width: 768px) {
     width: 150px;
@@ -31,45 +30,6 @@
 
   &:hover {
     @include scale(1.05);
-  }
-}
-
-.img-link {
-
-  &:hover {
-    @include scale(1.05);
-  }
-
-  .img-container{
-    position: relative;
-    margin: 0 20px 0 50%;
-    width: 200px;
-    height: 200px;
-    max-width: 100%;
-    vertical-align: middle;
-  }
-
-  .main-image{
-      width: 100%;
-      height: 100%;
-      border-radius: 100%;
-      border-style: none;
-      background: url("img/background2.jpg") center center no-repeat;
-      background-size: contain;
-  }
-
-  .overlay-image{
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      width: 100px;
-      height: 100px;
-      top: 27%;
-      left: 26%;
-      border-radius: 100%;
-      border-style: none;
-      background: url("img/avatar.jpg") center center no-repeat;
-      background-size: cover;
   }
 }
 
@@ -330,5 +290,52 @@
       padding: 60px 40px 0;
     }
   }
+}
+
+@media only screen and (max-width: 480px) {
+// Header
+.header {
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.header-box {
+  flex-flow: wrap;
+}
+
+.header-box hr{
+  width: 100%;
+  background-color: transparent;
+  margin: 0;
+}
+
+.wd-mob{
+  width: 100%;
+}
+
+.header-avatar {
+  margin: auto;
+}
+
+.header-title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.header-subtitle{
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 2px solid #e7e7e7;
+}
+.menu-links {
+  .list-reset {
+    .item{
+      list-style: none;
+      width: calc(100% / 2);
+    }
+  }
+}
+
+
 }
 

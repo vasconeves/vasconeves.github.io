@@ -3,17 +3,15 @@
 		<div class="row">
 			<div class="col col-12">
 				<div class="header-box">
-					<div class="col col-6">
+					<div class="col col-6 wd-mob">
 						{% if site.avatar_image %}
-						<a class="img-link" href="{{ "/" | relative_url }}">
-							<div class="img-container">
-							    <div class="main-image" style="background: url(img/background2.jpg) center center no-repeat; background-size: contain;"></div>
-							    <div class="overlay-image" style="background: url({{ site.avatar_image | relative_url }}) center center no-repeat;    background-size: cover;"></div>
-							</div>
+						<a href="{{ "/" | relative_url }}" class="header-avatar">
+							<img src="{{ site.avatar_image | relative_url }}" class="header-avatar-img" alt="{{ site.title }}">
 						</a>
 						{% endif %}
 					</div>
-					<div class="col col-6">
+					<hr>
+					<div class="col col-6 wd-mob">
 						{% if site.title %}
 						<h1 class="header-title">{{ site.title }}</h1>
 						{% endif %}
@@ -32,7 +30,7 @@
 							</ul>
 						</div>
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</div>
