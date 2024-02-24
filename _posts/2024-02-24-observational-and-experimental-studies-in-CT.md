@@ -321,7 +321,7 @@ KstestResult(statistic=0.13524505784239993, pvalue=0.6393148695381738, statistic
 You can use the **Wilcoxon sign-rank test**. You just need to ensure that the sample are drawn from some distribution that is symmetric around a mean.
 
 - Model: $X_1...X_n \sim Dist. $  symmetric around a mean $\mu$.
-- Test statistic: $W=\sum{_{i=1}^n X_i-\mu}R_i$, where $R_i$ is the rank of $\abs{X_i-\mu}$. The rank is just a weight that gives a value of 1 to the smallest distance and a value of $n$ to the largest distance.
+- Test statistic: $W=\sum{_{i=1}^n X_i-\mu}R_i$, where $R_i$ is the rank of $\| X_i-\mu\|$. The rank is just a weight that gives a value of 1 to the smallest distance and a value of $n$ to the largest distance.
 - This test statistic is asymptotically normal.
 
 There are many other tests. **The most important thing is to always check the assumption of each test very carefully!**
