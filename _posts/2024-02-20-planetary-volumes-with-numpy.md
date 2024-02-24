@@ -5,7 +5,7 @@ image: "/posts/solar_system_wikimedia_commons.jpg"
 tags: [Python, Numpy, Planets, Astronomy,Science]
 mathjax: true
 ---
-v1
+v2
 In this micro-project we will explore the basic functionality of `numpy` when calculating the Volume of planets.
 
 ---
@@ -43,7 +43,7 @@ volumes = 4/3 * np.pi * radii**3
 How long does this take? Just a small fraction of a second!
 
 ---
-*Image sourced at* | \url{https://en.wikipedia.org/wiki/Solar_System}
+*Image sourced at* | [https://en.wikipedia.org/wiki/Solar_System]([https://en.wikipedia.org/wiki/Solar_System)
 
 
 
