@@ -154,7 +154,7 @@ Alternative hypothesis: $\pi$ control > $\pi$ treatment
 The $\textit{p-value}$ is then the sum of probabilities of obtaining a value of T that is more extreme than 39, in the direction of the alternate hypothesis:
 
 $$
-P_{H_0}(T \le 39) = \sum_{t=0}^{39}{{31k \choose t}{31k \choose 102-t}{62k \choose 102}}
+P_{H_0}(T \le 39) = \sum_{t=0}^{39}{{\binom{31k}{t}}{\binom{31k}{102-t}}{\binom{62k}{102}}
 $$
 
 $\textit{p-value} = 0.011 < 0.05$
@@ -179,7 +179,7 @@ Shortcomings:
 
 # Sleeping drug study - a continuous variable example
 
-Let's now move on to a different study where we have a **continuous variable** as our variable of interst.
+Let's now move on to a different study where we have a **continuous variable** as our variable of interest.
 
 In the clinical trial setup we are testing a new sleeping aid drug which in principle should help users suffering from insomnia to increase their sleeping time.
 
