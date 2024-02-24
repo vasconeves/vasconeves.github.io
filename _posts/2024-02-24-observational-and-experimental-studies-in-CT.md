@@ -20,8 +20,8 @@ The key questions here are the following:
 
 * *How do we set up an experiment in order to minimize the problem of confounding?*
 
-The study consists in the screening of women's breasts by X-rays as shown in the Table below.
+The study consists in the screening of women's breasts by X-rays as shown in the Table below.test
 
-![](/posts/pics/mammography_table.png)
+![](/pics/mammography_table.png)
 
-![](/posts/clinical-trials.jpg)
+![](/img/posts/clinical-trials.jpg)
