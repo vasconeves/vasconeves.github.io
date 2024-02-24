@@ -43,7 +43,7 @@ volumes = 4/3 * np.pi * radii**3
 How long does this take? Just a small fraction of a second!
 
 ---
-*Image from wikimedia commons*
+*Image sourced at* | \url{https://en.wikipedia.org/wiki/Solar_System}
 
 
 
