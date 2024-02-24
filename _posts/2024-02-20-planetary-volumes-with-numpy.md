@@ -5,6 +5,7 @@ image: "/posts/solar_system_wikimedia_commons.jpg"
 tags: [Python, Numpy, Planets, Astronomy,Science]
 mathjax: true
 ---
+v1
 In this micro-project we will explore the basic functionality of `numpy` when calculating the Volume of planets.
 
 ---
