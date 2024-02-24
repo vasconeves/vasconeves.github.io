@@ -154,7 +154,7 @@ Alternative hypothesis: $\pi$ control > $\pi$ treatment
 The $\textit{p-value}$ is then the sum of probabilities of obtaining a value of T that is more extreme than 39, in the direction of the alternate hypothesis:
 
 $$
-P_{H_0}(T \le 39) = \sum_{t=0}^{39}{{\binom{31k}{t}}{\binom{31k}{102-t}}{\binom{62k}{102}}
+P_{H_0}(T \le 39) = \sum_{t=0}^{39}{\binom{31k}{t}}{\binom{31k}{102-t}}{\binom{62k}{102}}
 $$
 
 $\textit{p-value} = 0.011 < 0.05$
