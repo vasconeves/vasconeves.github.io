@@ -8,6 +8,8 @@ mathjax: true
 
 In this post I will present two different types of clinical trials: a discrete variable example and a continuous variable example.
 
+---
+
 # Mammography study - a discrete variable example
 
 Here I will demonstrate how we can analyze data from observational studies using a mammography study as an example.
