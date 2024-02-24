@@ -6,7 +6,7 @@ tags: [Python, Clinical Trials, Statistics]
 mathjax: true
 ---
 
-In this post I will present two different types of clinical trials: a discrete variable example and a continuous variable example.
+In this post I will present two different types of clinical trials: a discrete variable example and a continuous variable example showcasing a few different approaches on how to tackle these kinds of problems. It is also a good opportunity to present some fundamental statistical concepts. Towards the end we will revisit the Mammography study using this time the likelihood ratio approach and the last section will highlight the importance of doing p-value corrections when dealing with multiple hypothesis.
 
 ---
 
@@ -177,6 +177,8 @@ Shortcomings:
 - **Alternative is Bernard’s test** (estimates the margins)
 - Both tests are difficult to perform on large tables for computational reasons
 
+---
+
 # Sleeping drug study - a continuous variable example
 
 Let's now move on to a different study where we have a **continuous variable** as our variable of interest.
@@ -294,3 +296,340 @@ A great feature of the $t_n$ distribution is that it introduces uncertainty due 
 
 **Note: as a rule of thumb, when the sample size $n \ge 30$ the t-distribution is already very similar to the normal distribution. At this threshold the normal approximation becomes (more) valid.**
 
+---
+
+# Other basic statistical concepts
+
+## Testing the assumption of normality
+
+- When using a t-test sometimes we have very few samples. It is thus important to check the assumption of normality of the random variables. *How can we do that?*
+
+    - Using a qq-plot (quantile-quantile plot). By inspecting the form of the qq plot one has a **qualitative** measure of the form of the distribution. In this example I use the qqplot function of the statsmodels library. In short the function draws at random $n$ numbers and orders them, doing the same with the sample values. Then, if they're more or less in a straight line we can have some confidence that our sample is drawn from a normal distribution. **It's important to note that it is necessary to subtract by the mean and divide by the standard deviation to properly use the qq plot**.
+![](pics/qqplot.png)
+   - Using a KS test (one sample Kolmogorov smirnov test of normality). For instance we can use the 1-sample KS test for normality contained in the `scipy.stats` library and we conclude that there is a high probability that our data is drawn from a normal distribution ($\textit{p-value} \sim 0.64$) as shown below. **Always take care to check if you're doing a 1-sided or a two-sided test**.
+
+Code:
+```python
+sp.stats.ks_1samp(teste,sp.stats.norm.cdf,alternative='greater')
+KstestResult(statistic=0.13524505784239993, pvalue=0.6393148695381738, statistic_location=-0.34577756840579527, statistic_sign=1)
+```
+
+## The Wilcoxon signed-rank test
+
+*Ok, but what if the assumption of normality is not valid? What if the sample has origin in any other distribution?*
+
+You can use the **Wilcoxon sign-rank test**. You just need to ensure that the sample are drawn from some distribution that is symmetric around a mean.
+
+- Model: $X_1...X_n \sim Dist. $  symmetric around a mean $\mu$.
+- Test statistic: $W=\sum{_{i=1}^n X_i-\mu}R_i$, where $R_i$ is the rank of $|X_i-\mu|$. The rank is just a weight that gives a value of 1 to the smallest distance and a value of $n$ to the largest distance.
+- This test statistic is asymptotically normal.
+
+There are many other tests. **The most important thing is to always check the assumption of each test very carefully!**
+
+## Confidence intervals
+
+Ok, we're now actually happy with our model to obtain the expected value and its variability. But *actually* we're more interested in a range of **realistic values**. *How should we quantify this range*?
+
+This range is called a **confidence interval**. It is centered around the sample mean and its width is proportional to the standard error.
+
+The interval is defined in such a way that with probability $1-\alpha$ the interval will contain the true mean $\mu$. In other words, if we sample the dataset many times and calculate intervals each time, the probability that $\mu$ is in the proposed range is $1-\alpha$.
+
+We can write this interval in the following way
+
+$$
+P\left(-\Phi^{-1}_{1-\alpha/2} \le \frac{\overline{X}-\mu}{\sigma / \sqrt{n}} \le \Phi^{-1}_{1-\alpha/2}\right) = {1 - \alpha},
+$$
+
+where $\phi$ is the cdf of the distribution and $\alpha$ is the significance level.
+
+If we isolate $\mu$ then we obtain
+
+$$
+P(\overline{X}-\frac{\sigma}{\sqrt{n}}\Phi^{-1}_{1-\alpha/2} \le \mu \le \overline{X}+\frac{\sigma}{\sqrt{n}}\Phi^{-1}_{1-\alpha/2}) = {1 - \alpha}.
+$$
+
+Therefore, the (two-sided in this case!) confidence interval will be
+
+$$
+\overline{X} \pm \frac{\sigma}{\sqrt{n}}\Phi^{-1}_{1-\alpha/2}.
+$$
+
+To better understand what the confidence interval is we can create a very simple simulation where we randomly draw 100 elements from a standard normal distribution 100 times. The result is depicted in the following Picture.
+
+![](pics/simulation_ci.png)
+
+Here we assume that $\alpha = 0.05$ and thus $\Phi^{-1}_{0.975} \sim 1.96$.
+
+Code:
+```python
+#simulation
+#100 sets of 100 standard gaussian distribution draws
+#here we assume alpha = 0.05
+#we know the table value of phi^-1(0.95) = P(z<1.96) = 1.96
+q = 1.96 #alpha quantile for alpha=0.05
+media = np.zeros(100)
+ci = np.zeros((100))
+plt.figure(figsize=(3,8))
+for n in range(100) :
+    dist = sp.stats.norm.rvs(size=100)
+    media[n] = dist.mean()
+    ci[n] = dist.std()/np.sqrt(len(dist))*q
+    plt.plot((media[n]-ci[n],media[n]+ci[n]),(n,n),linewidth=2)
+
+plt.plot((media.mean(),media.mean()),(0,99),'r--',alpha=0.25,label='$\mu$')
+plt.xlabel('Confidence interval'),plt.ylabel('simulation #')
+plt.ylim(-1,100)
+```
+
+---
+
+# A general approach: the likelihood ratio test
+
+The likelihood ratio test is quite important because
+
+* you can use it in any setting
+* is quite powerfull! From the **Neyman-Pearson Lemma**, the likelihood raio test is the most powerful among all $\alpha$ tests for testing $H_0: \theta=\theta_0$ versus $H_A: \theta = \theta_A$ so it should be used in these cases.
+
+In general terms we can write that
+
+* We can have a model with r.v. X $\sim$ Distribution(x,$\theta$), where $\theta$ are the paremeters
+* We want to do a test on a null hypothesis $H_0: \theta \in \Theta_0 $ versus $H_A: \theta \in \Theta_A$, where $\Theta_0 \cap \Theta_A = \emptyset$
+* The likelihood ratio will be 
+$L(X) = \frac{\max_{\theta \in \Theta_0 p(x;\theta)}}{\max_{\theta \in \Theta p(x;\theta)}}$, where $\Theta = \Theta_0 \cup \Theta_A$. Also,
+  * $0 \le L(x) \le 1$
+  * if $L(x) << 1, \theta \in \Theta_A$
+  * if $L(x) \sim 1, \theta \in \Theta_0$
+  * the numerator is the maximum of the probability of observing the data under the null.
+  * the denominator is the maximum of the probability that you observe the data that you are given.
+  * the parameter $\theta$ that maximizes $p(x;\theta)$ is called the maximum likelihood estimator (MLE).
+  * the parameter $\theta$ can be in the null model or in the alternative model!
+
+* The likelihood raio test
+  * will reject $H_0$ if $L(x) < \eta$, where $\eta$ is chosen such that $P_H0(L(x) \le \eta) = \alpha$
+
+
+*Looks very complicated! How do we calculate this thing?*
+
+In general $L(x)$ does not have an easily computable null distribution. To actually compute it, we need to do the following transformation
+
+$$\Lambda(x) = -2\log(L(x)),$$
+
+where 
+
+* $0 \le \Lambda(x) \le \inf$
+* reject $H_0$ if $\Lambda(x)$ is too large.
+* From the **Wilks Theorem** we know that, under H_0
+
+$$\Lambda(x) \xrightarrow{n \rightarrow \inf} \chi^2_d,$$
+
+where $d = dim(\Theta) - dim(\Theta_0) >0$.
+
+*Still looks very cryptic...*
+
+Let's go back to the HIP mammography cancer study. The table below shows our data.
+
+![](pics/table_likelihood_test.png)
+
+
+In this case we have 
+
+* $H_0: \pi_{treatment} = \pi_{control}$ versus $H_A: \pi_{treatment} \ne \pi_{control}$
+* We're in the **binomial framework**. Therefore we need to calculate the binomial distribution probabilities for each case. Let $Y_T$ and $Y_C$ be the numbers of cancer deaths in the treatment and control groups respectively. Assumming that these groups are independent from each other, the probability of having y_t cancer deaths in the treatment group and y_c deaths in the control group is
+
+$$P(Y_T=y_t,Y_C=yc) = P(Y_T=yt)P(Y_C=yc),$$
+
+$Y_T$ and $Y_C$ will be
+
+$$Y_T \sim Binom(31k,\pi_T)$$
+
+and
+
+$$Y_C \sim Binom(31k,\pi_C).$$
+
+*Ok, let's calculate the LR test step-by-step!*
+
+The initial equation is
+
+$$\Lambda(Y_T,Y_C) = -2\log{\frac{\max_{\Theta_0}{P(y_t,y_c;\pi_T, \pi_C)}}{\max_{\Theta_A}{P(y_t,y_c;\pi_T, \pi_C)}}}.$$
+
+The maximum values of the probabilities are obtained with MLE estimators, so we can write that
+
+$$\Lambda(Y_T,Y_C) = -2\log{\frac{P(Binom(31k,\hat{\pi}^{MLE})=yt)P(Binom(31k,\hat{\pi}^{MLE})=yc)}{P(Binom(31k,\hat{\pi_T}^{MLE})=yt)P(Binom(31k,\hat{\pi_C}^{MLE})=yc)}}.$$
+
+* Under $H_0$ the MLE is $\hat{\pi}$ and
+
+$$p(x;\pi) = {62k \choose 102}\pi^{102}(1-\pi)^{61898}.$$
+
+* Under $H_A$ the MLEs are $\hat{\pi}_{treatment}$ and $\hat{\pi}_{control.}$, and
+
+$$p(x;\pi_{treat}) = {31k \choose 39}\pi^{39}(1-\pi)^{30961},$$
+
+$$p(x;\pi_{control}) = {31k \choose 63}\pi^{63}(1-\pi)^{30937}.$$
+
+To calculate the MLE estimators we need to transform the probability into a logarithm and then derive to find the maximum. Doing the two simple operations we end up with (surprise!):
+  * $\hat{\pi} = \frac{102}{62k}$
+  * $\hat{\pi}_{treat} = \frac{39}{31k}$
+  * $\hat{\pi}_{control} = \frac{63}{31k}$
+
+Now, we just need to plug-in the values into the formula above and we get
+
+$$\Lambda(Y_T,Y_C) = -2\log{\frac{\max_{\Theta_0}{P(y_t,y_c;\pi_T, \pi_C)}}{\max_{\Theta_A}{P(y_t,y_c;\pi_T, \pi_C)}}} \sim 5.71.$$
+
+Computing the test in python just takes one line of code.
+```python
+LRtest = -2*np.log(sp.stats.binom.pmf(39,31000,102/62000)*sp.stats.binom.pmf(63,31000,102/62000)/(sp.stats.binom.pmf(39,31000,39/31000)*sp.stats.binom.pmf(63,31000,63/31000)))
+print ('The value of the LR test is',LRtest)
+The value of the LR test is 5.709660479762173
+```
+
+Under the null, the Wilks theorem states that this distribution tends to a $\chi$ squared distribution of degree $d$, where $d = 2-1$.
+
+Therefore, we will observe where the value of the test ended up in this distribution as shown below.
+
+![](pics/chi_dist.png)
+
+The $\alpha$ threshold is depicted by the red line and our test value is shwon as the blue star. As we can clearly see, according to the likelihood ratio test, for a significance value $\alpha = 0.05$ we can safely reject $H_0$.
+
+We can also calculate the $\textit{p-value}$. In this case it will be the probability above the test value. We can obtain this value using the cdf of this function. 
+
+The cdf will give the probability up to $x=5.71$. To obtain the p-value we just obtain the remaining part of the probability by calculating the complement $1-cdf$. Again we just need one line of code.
+
+```python
+pvalue = 1-sp.stats.chi2.cdf(5.71,1)
+print('The p-value associated to the LR test is',pvalue)
+The p-value associated to the LR test is 0.016868539397458027
+```
+
+We can also observe this p-value graphically as shown in the following plot.
+
+![](pics/chi2_dist_1d.png)
+
+Code:
+```python
+x = np.linspace(0.1,10,1000)
+pdf_x = sp.stats.chi2.pdf(x,1)
+q_alfa = 3.84 #0.95 quantile taken from table
+f_alfa = pdf_x[np.max(np.where(x<=q_alfa))]
+
+plt.plot(x,pdf_x,label='$\chi^2_1 distribution$')
+plt.fill_between(x,pdf_x,color='red',where=(x>=LRtest),label='p-value')
+plt.plot((q_alfa,q_alfa),(0,f_alfa),'b:',label='0.95 quantile')
+plt.plot((0,0),(0,1.2),'k',linewidth=0.5)
+plt.plot((0,10),(0,0),'k',linewidth=0.5)
+plt.xlabel('X'),plt.ylabel('pdf')
+
+plt.legend()
+```
+
+---
+
+# Multiple hypothesis testing
+
+So far we've seen cases for single hypothesis testing, but in the real world and in a lot of experiments there are at least a few variables that need to be taken into account.
+
+There is also the temptation that, when doing an experiment, to test for as many variables as possible. This has the awful side effect of increasing the chances of finding spurious correlations. 
+
+For instance:
+
+* Intake of tomato sauce (p-value of 0.001), tomatoes (p-value of 0.03), and pizza (p-value of 0.05) reduce the risk of prostate cancer;
+* But for example tomato juice (p-value of 0.67), or cooked spinach (p-value of 0.51), and many other vegetables are not significant.
+* ”Orange cars are less likely to have serious damages that are discovered only after the purchase.”
+
+*See where we are going?*
+
+For instance consider the case of a famous product called "Wonder-syrup". To study the benefits of ingesting this syrup, a research group constructed the following experiment:
+
+* they choose a randomized group of 1000 people.
+* measured 100 variables before and after taking the syrup: weight, blood pressure, etc.
+* performed a paired t-test with a significance level of 5\%.
+
+If we model the number of false significant tests as having a Binomial distribution, or Binom(100,0.05), **on average we will get 5 out of 100 variables showing a significant effect!!**
+
+**How can we prevent this from happening in multiple hypothesis testing?*
+
+We need to **correct** our p-values! 
+
+There are two main avenues to consider:
+
+- Family-wise error rate (FWER) which is the probability of making at least one false discovery, or type I error.
+
+and
+
+- False discovery rate (FDR) which is the expected fraction of false significance results among **all** significance results.
+
+## Family-wise error rate (FWER)
+
+FWER is usually used when we really need to be careful and control the error rate dut to possible serious consequences in any false discovery, such as the Pharmaceutical sector.
+
+We can control the size of the FWER by choosing significance levels of the individual tests to vary with the size of the series of tests. This translates to correcting the *p-values* before comparing with a fixed significance level e.g. $\alpha = 0.05$.
+
+### Bonferroni Correction
+
+The simples of the possible correction for $\alpha$ is the Bonferroni Correction. If we have $m$ tests performed at the same time, the corrected *p-value* will be 
+
+$$p'=\alpha/m,$$
+
+then $FWER < \alpha$. We can re-write the equation stating that
+
+$$FWER = mp' < \alpha.$$
+
+**Note: We should note that this is a very stringent and conservative test, and can be applied when the tests are not necessarily independent of each other.**
+**Note: when $m$ is large this criteria are stringent and lowers the power of the tests.**
+
+### Holm-Bonferroni Correction
+
+The Holm-Bonferroni method is more flexible and less stringent.
+
+Suppose we have $m$ hypothesis. The application of the method consists in the following steps:
+
+- Calculate the initial *p-values* for each hypothesis.
+- Sort the initial *p-values* in increasing order.
+- Start with the *p-value* with the lowest number. If
+
+$$p_{i} < \frac{\alpha}{m-(i-1)},$$
+
+then
+  - reject $H_0^i$
+- proceed to the next smallest *p-value* by 1, and again use the same rejection criterion above.
+- As soon as hypothesis $H_0^k$ is not rejected, stop and do not reject any more of the $H_0$.
+
+**Note: This procedure guarantees $FWER < \alpha$ for $m$ tests, *which do not need to be independent*.**
+**Note: the Holms-Bonferroni method is more powerful than the Bonferroni correction, since it increases the chance of rejecting the null hypothesis, and thus reduces the change of type II errors.**
+
+## False discovery rate (FDR)
+
+In most cases, however, FWER is too strict and we loose too much statistical power. The most sensible course of action is then to control the expected proportion of false discoveries among all discoveries made. We can define 
+
+$$
+FDR = \mathbb{E}\left[ \frac{ \text{nº type 1 errors or false discoveries}}{\text{total number of discoveries}}\right].
+$$
+
+### The Benjamini-Hochberg correction
+
+The Benjamini-Hochbert correction guarantees $FDR < \alpha$ for a series of **$m$ independent tests.**.
+
+The method is as follows:
+
+- Sort the $m$ *p-values* in increasing order.
+- Find the maximum $k$ such that
+
+$$
+p_{k} \le \frac{k}{m}\alpha
+$$
+
+- Reject all of $H_0^1, H_0^2,...,H_0^k.$
+
+**Example**
+
+The table below illustrates how to apply the method. First we rank the p-values, then we calculate the adjusted value and then we reject the ones with $p<\alpha$.
+
+![](pics/fdr_table.png)
+
+## Commonly accepted practice
+
+*What correction should we use and in which settings?*
+
+- It's ok not correcting for multiple testing when generating the original hypothesis, **but the number of tests performed must be reported**. Generally, to check 
+- If it's a screening or exploratory analysis you do want to get some significant results. Then, a $FDR \le 10\%$ is adequate.
+- In more stringent contexts like confirmatory analysis you really need to use a $FWER \le 5\%$, like for instance the test done by the Food and Drug Administration.
+- Personally, and in general, I would go for a FDR between 1 to 5\% but it all depends on the context, type of sample, sample number, variables, error type, etc.
