@@ -1,21 +1,21 @@
 #-------------------------------
 # General Site Settings
-title: John Doe
-description: "I am an aspiring Data Scientist building up my portfolio which focuses on interesting and impactful projects that I have undertaken recently."
+title: Vasco Neves
+description: "Hello! I'm Vasco, Data Scientist.  My portfolio showcases example projects I've recently undertaken, with a strong emphasis on business impact. Please visit my Github & LinkedIn pages by using the links below or download my Resume for further details!"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # About Section
 subtitle: Data Science <span style="color:#f58506"> Portfolio </span>
-location: "London, UK"
-resume_url: "https://vidhyav656.github.io"
-avatar_image: /img/avatar.jpg
+location: "Aveiro, Portugal"
+resume_url: "docs/vneves_CV_v4.pdf"
+avatar_image: /img/profile_picture.jpg
 
 #-------------------------------
 # Contact links
-linkedln: "https://linkedln.com/#" # Add your linkedln handle
-github: "https://github.com/#"  # Add your github handle
+linkedln: "http://linkedin.com/in/vasco-neves-5544441a" # Add your linkedln handle
+github: "https://github.com/vasconeves/"  # Add your github handle
 
 #-------------------------------
 # Build settings
