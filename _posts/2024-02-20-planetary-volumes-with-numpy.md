@@ -17,11 +17,7 @@ First, let's import `numpy` as `np`.
 import numpy as np
 ```
 
-Now, we know that a volume of a solid is
-
-$
-V = \frac{4}{3}\pi r^2.
-$
+Now, we know that a volume of a solid is $ V = \frac{4}{3}\pi r^2$.
 
 $$
 V = \frac{4}{3}\pi r^2.
