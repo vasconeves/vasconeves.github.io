@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [basic] Finding the Volumes of Planets
+title: Finding the Volumes of Planets
 image: "/posts/solar_system_wikimedia_commons.jpg"
 tags: [Python, Numpy, Planets, Astronomy,Science]
 mathjax: true
@@ -16,10 +16,6 @@ import numpy as np
 ```
 
 Now, we know that a volume of a solid is $V = \frac{4}{3}\pi r^2$.
-
-$$
-V = \frac{4}{3}\pi r^2.
-$$
 
 We can write the radii of the planets of the solar system in kilometers in a `numpy array` as
 
