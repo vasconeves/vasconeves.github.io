@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Observational and Experimental Studies in Clinical Trials
-image: "clinical-trials.jpg"
-tags: [Python, Numpy, Planets, Astronomy,Science]
+image: "/posts/clinical-trials.jpg"
+tags: [Python, Clinical Trials, Statistics]
 mathjax: true
 ---
 
