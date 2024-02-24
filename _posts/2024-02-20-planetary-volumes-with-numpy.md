@@ -1,12 +1,10 @@
 ---
 layout: post
-title: Finding the Volumes of Planets
+title: [basic] Finding the Volumes of Planets
 image: "/posts/solar_system_wikimedia_commons.jpg"
-tags: [Python, Planets, Astronomy,Science]
+tags: [Python, Numpy, Planets, Astronomy,Science]
 mathjax: true
 ---
-test123v7
-
 In this micro-project we will explore the basic functionality of `numpy` when calculating the Volume of planets.
 
 ---
