@@ -22,4 +22,4 @@ The key questions here are the following:
 
 The study consists in the screening of women's breasts by X-rays as shown in the Table below.
 
-![Alt text](pics/mammography_table.png)
+![Alt text](posts/pics/mammography_table.png)
