@@ -305,7 +305,7 @@ A great feature of the $t_n$ distribution is that it introduces uncertainty due 
 - When using a t-test sometimes we have very few samples. It is thus important to check the assumption of normality of the random variables. *How can we do that?*
 
     - Using a qq-plot (quantile-quantile plot). By inspecting the form of the qq plot one has a **qualitative** measure of the form of the distribution. In this example I use the qqplot function of the statsmodels library. In short the function draws at random $n$ numbers and orders them, doing the same with the sample values. Then, if they're more or less in a straight line we can have some confidence that our sample is drawn from a normal distribution. **It's important to note that it is necessary to subtract by the mean and divide by the standard deviation to properly use the qq plot**.
-![](pics/qqplot.png)
+![](/pics/qqplot.jpg)
    - Using a KS test (one sample Kolmogorov smirnov test of normality). For instance we can use the 1-sample KS test for normality contained in the `scipy.stats` library and we conclude that there is a high probability that our data is drawn from a normal distribution ($\textit{p-value} \sim 0.64$) as shown below. **Always take care to check if you're doing a 1-sided or a two-sided test**.
 
 Code:
@@ -321,7 +321,7 @@ KstestResult(statistic=0.13524505784239993, pvalue=0.6393148695381738, statistic
 You can use the **Wilcoxon sign-rank test**. You just need to ensure that the sample are drawn from some distribution that is symmetric around a mean.
 
 - Model: $X_1...X_n \sim Dist. $  symmetric around a mean $\mu$.
-- Test statistic: $W=\sum{_{i=1}^n X_i-\mu}R_i$, where $R_i$ is the rank of $|X_i-\mu|$. The rank is just a weight that gives a value of 1 to the smallest distance and a value of $n$ to the largest distance.
+- Test statistic: $W=\sum{_{i=1}^n X_i-\mu}R_i$, where $R_i$ is the rank of $\abs{X_i-\mu}$. The rank is just a weight that gives a value of 1 to the smallest distance and a value of $n$ to the largest distance.
 - This test statistic is asymptotically normal.
 
 There are many other tests. **The most important thing is to always check the assumption of each test very carefully!**
@@ -356,7 +356,7 @@ $$
 
 To better understand what the confidence interval is we can create a very simple simulation where we randomly draw 100 elements from a standard normal distribution 100 times. The result is depicted in the following Picture.
 
-![](pics/simulation_ci.png)
+![](/pics/simulation_ci.jpg)
 
 Here we assume that $\alpha = 0.05$ and thus $\Phi^{-1}_{0.975} \sim 1.96$.
 
@@ -428,7 +428,7 @@ where $d = dim(\Theta) - dim(\Theta_0) >0$.
 
 Let's go back to the HIP mammography cancer study. The table below shows our data.
 
-![](pics/table_likelihood_test.png)
+![](/pics/table_likelihood_test.jpg)
 
 
 In this case we have 
@@ -486,7 +486,7 @@ Under the null, the Wilks theorem states that this distribution tends to a $\chi
 
 Therefore, we will observe where the value of the test ended up in this distribution as shown below.
 
-![](pics/chi_dist.png)
+![](/pics/chi_dist.jpg)
 
 The $\alpha$ threshold is depicted by the red line and our test value is shwon as the blue star. As we can clearly see, according to the likelihood ratio test, for a significance value $\alpha = 0.05$ we can safely reject $H_0$.
 
@@ -502,7 +502,7 @@ The p-value associated to the LR test is 0.016868539397458027
 
 We can also observe this p-value graphically as shown in the following plot.
 
-![](pics/chi2_dist_1d.png)
+![](/pics/chi2_dist_1d.jpg)
 
 Code:
 ```python
@@ -623,7 +623,7 @@ $$
 
 The table below illustrates how to apply the method. First we rank the p-values, then we calculate the adjusted value and then we reject the ones with $p<\alpha$.
 
-![](pics/fdr_table.png)
+![](/pics/fdr_table.jpg)
 
 ## Commonly accepted practice
 
