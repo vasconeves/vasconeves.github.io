@@ -632,4 +632,4 @@ The table below illustrates how to apply the method. First we rank the p-values,
 - It's ok not correcting for multiple testing when generating the original hypothesis, **but the number of tests performed must be reported**. Generally, to check 
 - If it's a screening or exploratory analysis you do want to get some significant results. Then, a $FDR \le 10\%$ is adequate.
 - In more stringent contexts like confirmatory analysis you really need to use a $FWER \le 5\%$, like for instance the test done by the Food and Drug Administration.
-- Personally, and in general, I would go for a FDR between 1 to 5\% but it all depends on the context, type of sample, sample number, variables, error type, etc.
+- Personally, and in general, I would go for a FDR between 1 to 5% but it all depends on the context, type of sample, sample number, variables, error type, etc.
