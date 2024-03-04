@@ -20,6 +20,7 @@ In this project I apply a Chi-Square Test For Independence (a Hypothesis Test) t
 - [05. Discussion](#discussion)
 
 # Project Overview  <a name="overview-main"></a>
+---
 
 ## Context <a name="overview-context"></a>
 
@@ -74,6 +75,7 @@ Our results here also do not say that there *definitely isn't a difference betwe
 **Running more A/B Tests like this, gathering more data, and then re-running this test may provide us, and the client more insight!**
 
 # Concept Overview  <a name="concept-overview"></a>
+---
 
 ## A/B Testing
 
@@ -87,15 +89,15 @@ A Hypothesis Test is used to assess the plausibility, or likelihood of an assume
 
 There are many different scenarios we can run Hypothesis Tests on, and they all have slightly different techniques and formulas - however they all have some shared, fundamental steps & logic that underpin how they work.
 
-**The Null Hypothesis**
+### The Null Hypothesis
 
 In any Hypothesis Test, we start with the Null Hypothesis. The Null Hypothesis is where we state our initial viewpoint, and in statistics, and specifically Hypothesis Testing, our initial viewpoint is always that the result is purely by chance or that there is no relationship or association between two outcomes or groups
 
-**The Alternate Hypothesis**
+### The Alternate Hypothesis
 
 The aim of the Hypothesis Test is to look for evidence to support or reject the Null Hypothesis.  If we reject the Null Hypothesis, that would mean we’d be supporting the Alternate Hypothesis.  The Alternate Hypothesis is essentially the opposite viewpoint to the Null Hypothesis - that the result is *not* by chance, or that there *is* a relationship between two outcomes or groups
 
-**The Acceptance Criteria**
+## The Acceptance Criteria
 
 In a Hypothesis Test, before we collect any data or run any numbers - we specify an Acceptance Criteria.  This is a p-value threshold at which we’ll decide to reject or support the null hypothesis.  It is essentially a line we draw in the sand saying "if I was to run this test many many times, what proportion of those times would I want to see different results come out, in order to feel comfortable, or confident that my results are not just some unusual occurrence"
 
@@ -103,7 +105,7 @@ Conventionally, we set our Acceptance Criteria to 0.05 - but this does not have 
 
 So to summarise, in a Hypothesis Test, we test the Null Hypothesis using a p-value and then decide it’s fate based on the Acceptance Criteria.
 
-**Types Of Hypothesis Test**
+## Types Of Hypothesis Test
 
 There are many different types of Hypothesis Tests, each of which is appropriate for use in differing scenarios - depending on a) the type of data that you’re looking to test and b) the question that you’re asking of that data.
 
@@ -126,6 +128,7 @@ The *expected frequencies* are essentially what we would *expect* to see based o
 * The Chi-Square Test can extend out to more than 2 groups - meaning the business can have one consistent approach to measuring significance
 
 # Data Overview & Preparation  <a name="data-overview"></a>
+---
 
 In the client database, we have a *campaign_data* table which shows us which customers received each type of "Delivery Club" mailer, which customers were in the control group, and which customers joined the club as a result.
 
@@ -167,7 +170,6 @@ A sample of this data (the first 10 rows) can be seen below:
 | 405 | delivery_club | Mailer1 | 0 |
 | 435 | delivery_club | Mailer2 | 0 |
 
-
 In the DataFrame we have:
 
 * customer_id
@@ -175,13 +177,11 @@ In the DataFrame we have:
 * mailer_type (either Mailer1 or Mailer2)
 * signup_flag (either 1 or 0)
 
-___
-
 
 # Applying Chi-Square Test For Independence <a name="chi-square-application"></a>
+---
 
-
-### State Hypotheses & Acceptance Criteria For Test
+## State Hypotheses & Acceptance Criteria For Test
 
 The very first thing we need to do in any form of Hypothesis Test is state our Null Hypothesis, our Alternate Hypothesis, and the Acceptance Criteria (more details on these in the section above)
 
@@ -196,7 +196,7 @@ acceptance_criteria = 0.05
 
 ```
 
-### Calculate Observed Frequencies & Expected Frequencies
+## Calculate Observed Frequencies & Expected Frequencies
 
 As mentioned in the section above, in a Chi-Square Test For Independence, the *observed frequencies* are the true values that we’ve seen, in other words the actual rates per group in the data itself.  The *expected frequencies* are what we would *expect* to see based on *all* of the data combined.
 
@@ -249,6 +249,7 @@ We have a Chi-Square Statistic of **1.94** and a p-value of **0.16**.  The criti
 **Note** When applying the Chi-Square Test above, we use the parameter *correction = False* which means we are applying what is known as the *Yate's Correction* which is applied when your Degrees of Freedom is equal to one.  This correction helps to prevent overestimation of statistical significance in this case.
 
 # Analyzing The Results <a name="chi-square-results"></a>
+---
 
 At this point we have everything we need to understand the results of our Chi-Square test - and just from the results above we can see that, since our resulting p-value of **0.16** is *greater* than our Acceptance Criteria of 0.05 then we will _retain_ the Null Hypothesis and conclude that there is no significant difference between the signup rates of Mailer 1 and Mailer 2.
 
@@ -280,6 +281,7 @@ As our chi-square statistic of 1.9414 is lower than our critical value of 3.8414
 As we can see from the outputs of these print statements, we do indeed retain the null hypothesis.  We could not find enough evidence that the signup rates for Mailer 1 and Mailer 2 were different - and thus conclude that there was no significant difference.
 
 # Discussion <a name="discussion"></a>
+---
 
 While we saw that the higher cost Mailer 2 had a higher signup rate (37.8%) than the lower cost Mailer 1 (32.8%) it appears that this difference is not significant, at least at our Acceptance Criteria of 0.05.
 
