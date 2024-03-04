@@ -59,8 +59,8 @@ Based upon our observed values, we can give this all some context with the sign-
 
 However, the Chi-Square Test gives us the following statistics:
 
-* Chi-Square Statistic: **1.94**
-* p-value: **0.16**
+* Chi-Square Statistic: **1.73**
+* p-value: **0.19**
 
 The Critical Value for our specified Acceptance Criteria of 0.05 is **3.84**
 
@@ -185,7 +185,7 @@ In the DataFrame we have:
 
 The very first thing we need to do in any form of Hypothesis Test is state our Null Hypothesis, our Alternate Hypothesis, and the Acceptance Criteria (more details on these in the section above)
 
-In the code below we code these in explcitly & clearly so we can utilise them later to explain the results.  We specify the common Acceptance Criteria value of 0.05.
+In the code below we code these in explicitly & clearly so we can utilize them later to explain the results.  We specify the common Acceptance Criteria value of 0.05.
 
 ```python
 
@@ -218,15 +218,15 @@ The below code:
 observed_values = pd.crosstab(campaign_data["mailer_type"], campaign_data["signup_flag"]).values
 
 # run the chi-square test
-chi2_statistic, p_value, dof, expected_values = chi2_contingency(observed_values, correction = False)
+chi2_statistic, p_value, dof, expected_values = chi2_contingency(observed_values, correction = True)
 
 # print chi-square statistic
 print(chi2_statistic)
-1.94
+1.73
 
 # print p-value
 print(p_value)
-0.16
+0.19
 
 # find the critical value for our test
 critical_value = chi2.ppf(1 - acceptance_criteria, dof)
@@ -242,11 +242,11 @@ Based upon our observed values, we can give this all some context with the sign-
 * Mailer 1 (Low Cost): **32.8%** signup rate
 * Mailer 2 (High Cost): **37.8%** signup rate
 
-From this, we can see that the higher cost mailer does lead to a higher signup rate.  The results from our Chi-Square Test will provide us more information about how confident we can be that this difference is robust, or if it might have occured by chance.
+From this, we can see that the higher cost mailer does lead to a higher signup rate.  The results from our Chi-Square Test will provide us more information about how confident we can be that this difference is robust, or if it might have ocurred by chance.
 
-We have a Chi-Square Statistic of **1.94** and a p-value of **0.16**.  The critical value for our specified Acceptance Criteria of 0.05 is **3.84**
+We have a Chi-Square Statistic of **1.73** and a p-value of **0.19**.  The critical value for our specified Acceptance Criteria of 0.05 is **3.84**
 
-**Note** When applying the Chi-Square Test above, we use the parameter *correction = False* which means we are applying what is known as the *Yate's Correction* which is applied when your Degrees of Freedom is equal to one.  This correction helps to prevent overestimation of statistical significance in this case.
+**Note** When applying the Chi-Square Test above, we use the parameter *correction = True* which means we are applying what is known as the *Yate's Correction* which is applied when your Degrees of Freedom is equal to one. This correction helps to prevent overestimation of statistical significance in this case.
 
 # Analyzing The Results <a name="chi-square-results"></a>
 ---
@@ -292,3 +292,4 @@ Our results here also do not say that there *definitely isn't a difference betwe
 Running more A/B Tests like this, gathering more data, and then re-running this test may provide us, and the client more insight!
 
 Image sourced from: | [https://commons.m.wikimedia.org/wiki/File:AB_Testing_Results_on_Desktop_Devices.jpg](https://commons.m.wikimedia.org/wiki/File:AB_Testing_Results_on_Desktop_Devices.jpg)
+
