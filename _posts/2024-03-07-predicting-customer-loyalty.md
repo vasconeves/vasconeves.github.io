@@ -411,7 +411,7 @@ plt.show()
 ```
 
 <br>
-This creates the below plot, which shows us that the highest cross-validated accuracy (0.8635) is actually when we include all eight of our original input variables.  This is marginally higher than 6 included variables, and 7 included variables.  We will continue on with all 8!
+This creates the plot below, which shows us that the highest cross-validated accuracy (0.8635) is actually when we include all eight of our original input variables.  This is marginally higher than 6 included variables, and 7 included variables.  We will continue on with all 8!
 
 <br>
 
