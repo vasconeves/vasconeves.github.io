@@ -75,7 +75,7 @@ As the most important outcome for this project was predictive accuracy, rather t
 
 While predictive accuracy was relatively high - other modelling approaches could be tested, especially those somewhat similar to Random Forest, for example XGBoost, LightGBM to see if even more accuracy could be gained.
 
-From a data point of view, further variables could be collected, and further feature engineering could be undertaken to ensure that we have as much useful information available for predicting customer loyalty
+From a data point of view, further variables could be collected, and further feature engineering could be undertaken to ensure that we have as much useful information available for predicting customer loyalty.
 <br>
 <br>
 
@@ -85,7 +85,7 @@ The *loyalty score* metric measures the % of grocery spend (market level) that e
 
 Example 1: Customer X has a total grocery spend of $100 and all of this is spent with our client. Customer X has a *loyalty score* of 1.0.
 
-Example 2: Customer Y has a total grocery spend of $200 but only 20% is spent with our client.  The remaining 80% is spend with competitors.  Customer Y has a *customer loyalty score* of 0.2.
+Example 2: Customer Y has a total grocery spend of $200 but only 20% is spent with our client.  The remaining 80% is spend with competitors. Customer Y has a *customer loyalty score* of 0.2.
 <br>
 <br>
 
@@ -93,7 +93,7 @@ Example 2: Customer Y has a total grocery spend of $200 but only 20% is spent wi
 # Data Overview  <a name="data-overview"></a>
 ---
 
-We will be predicting the *loyalty_score* metric.  This metric exists (for half of the customer base) in the *loyalty_scores* table of the client database.
+We will be predicting the *loyalty_score* metric. This metric exists (for half of the customer base) in the *loyalty_scores* table of the client database.
 
 The key variables hypothesized to predict the missing loyalty scores will come from the client database, namely the *transactions* table, the *customer_details* table, and the *product_areas* table.
 
@@ -230,7 +230,7 @@ For Linear Regression we have certain data preprocessing steps that need to be a
 
 ### Missing Values
 
-The number of missing values in the data was extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove those rows
+The number of missing values in the data was extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove those rows.
 
 ```python
 
@@ -263,7 +263,7 @@ In this code section, we use **.describe()** from Pandas to investigate the spre
 <br>
 Based on this investigation, we see some *max* column values for several variables to be much higher than the *median* value.
 
-This is for columns *distance_from_store*, *total_sales*, and *total_items*
+This is for columns *distance_from_store*, *total_sales*, and *total_items*.
 
 For example, the median *distance_to_store* is 1.645 miles, but the maximum is over 44 miles!
 
@@ -458,7 +458,7 @@ r_squared = r2_score(y_test, y_pred)
 print(r_squared)
 ```
 
-The resulting r-squared score from this is **0.78**
+The resulting r-squared score from this is **0.78**.
 
 <br>
 
@@ -481,7 +481,7 @@ cv_scores = cross_val_score(regressor, X_train, y_train, cv = cv, scoring = "r2"
 cv_scores.mean()
 ```
 
-The mean cross-validated r-squared score from this is **0.853**
+The mean cross-validated r-squared score from this is **0.853**.
 
 <br>
 
@@ -595,7 +595,7 @@ While Linear Regression is susceptible to the effects of outliers, and highly co
 
 ### Missing Values
 
-The number of missing values in the data was extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove those rows
+The number of missing values in the data was extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove those rows.
 
 ```python
 
@@ -686,7 +686,7 @@ regressor.fit(X_train, y_train)
 
 ### Predict On The Test Set
 
-To assess how well our model is predicting on new data - we use the trained model object (here called *regressor*) and ask it to predict the *loyalty_score* variable for the test set
+To assess how well our model is predicting on new data - we use the trained model object (here called *regressor*) and ask it to predict the *loyalty_score* variable for the test set.
 
 ```python
 
@@ -699,7 +699,7 @@ y_pred = regressor.predict(X_test)
 
 ### Calculate R-Squared
 
-To calculate r-squared, we use the following code where we pass in our *predicted* outputs for the test set (y_pred), as well as the *actual* outputs for the test set (y_test)
+To calculate r-squared, we use the following code where we pass in our *predicted* outputs for the test set (y_pred), as well as the *actual* outputs for the test set (y_test).
 
 ```python
 
@@ -709,7 +709,7 @@ print(r_squared)
 
 ```
 
-The resulting r-squared score from this is **0.898**
+The resulting r-squared score from this is **0.898**.
 
 <br>
 
@@ -897,7 +897,7 @@ While Linear Regression is susceptible to the effects of outliers, and highly co
 
 ### Missing Values
 
-The number of missing values in the data was extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove those rows
+The number of missing values in the data was extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove those rows.
 
 ```python
 
@@ -990,7 +990,7 @@ regressor.fit(X_train, y_train)
 
 ### Predict On The Test Set
 
-To assess how well our model is predicting on new data - we use the trained model object (here called *regressor*) and ask it to predict the *loyalty_score* variable for the test set
+To assess how well our model is predicting on new data - we use the trained model object (here called *regressor*) and ask it to predict the *loyalty_score* variable for the test set.
 
 ```python
 
@@ -1003,7 +1003,7 @@ y_pred = regressor.predict(X_test)
 
 ### Calculate R-Squared
 
-To calculate r-squared, we use the following code where we pass in our *predicted* outputs for the test set (y_pred), as well as the *actual* outputs for the test set (y_test)
+To calculate r-squared, we use the following code where we pass in our *predicted* outputs for the test set (y_pred), as well as the *actual* outputs for the test set (y_test).
 
 ```python
 
@@ -1019,7 +1019,7 @@ The resulting r-squared score from this is **0.957** - higher than both Linear R
 
 ### Calculate Cross Validated R-Squared
 
-As we did when testing Linear Regression & our Decision Tree, we will again utilize Cross Validation (for more info on how this works, please refer to the Linear Regression section above)
+As we did when testing Linear Regression & our Decision Tree, we will again utilize Cross Validation (for more info on how this works, please refer to the Linear Regression section above).
 
 ```python
 
@@ -1069,7 +1069,7 @@ At a high level, there are two common ways to tackle this.  The first, often jus
 
 If we do this for *each* of our input variables, we can compare these scores and understand which is adding the most value to the predictive power of the model!
 
-The other approach, often called **Permutation Importance** cleverly uses some data that has gone *unused* at when random samples are selected for each Decision Tree (this stage is called "bootstrap sampling" or "bootstrapping")
+The other approach, often called **Permutation Importance** cleverly uses some data that has gone *unused* at when random samples are selected for each Decision Tree (this stage is called "bootstrap sampling" or "bootstrapping").
 
 These observations that were not randomly selected for each Decision Tree are known as *Out of Bag* observations and these can be used for testing the accuracy of each particular Decision Tree.
 
@@ -1208,7 +1208,7 @@ loyalty_predictions = regressor.predict(to_be_scored)
 
 ```
 <br>
-Just like that, we have made our *loyalty_score* predictions for these missing customers.  Due to the impressive metrics on the test set, we can be reasonably confident with these scores.  This extra customer information will ensure our client can undertake more accurate and relevant customer tracking, targeting, and comms.
+Just like that, we have made our *loyalty_score* predictions for these missing customers.  Due to the impressive metrics on the test set, we can be reasonably confident with these scores.  This extra customer information will ensure our client can undertake more accurate and relevant customer tracking, targeting, and communication.
 
 
 <br>
