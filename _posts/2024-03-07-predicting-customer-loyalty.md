@@ -1221,4 +1221,4 @@ We could even look to tune the hyperparameters of the Random Forest, notably reg
 
 From a data point of view, further variables could be collected, and further feature engineering could be undertaken to ensure that we have as much useful information available for predicting customer loyalty.
 
-Image sourced from: | [https://openclipart.org/detail/267335/prismatic-shopping-cart-icon-3](https://openclipart.org/detail/267335/prismatic-shopping-cart-icon-3)
+Top image sourced from: | [https://openclipart.org/detail/267335/prismatic-shopping-cart-icon-3](https://openclipart.org/detail/267335/prismatic-shopping-cart-icon-3)
