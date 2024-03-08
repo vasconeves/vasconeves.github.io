@@ -405,10 +405,3 @@ plt.show()
 - We could now establish some rules based, for instance, on the distance to the center of each cluster, to be able to read more hand-written numbers correctly.
 
 - We should also be aware of the time each algorithm spends looking for the best solution. In this case, it is clear that the fastest algorithms do not work well, which, in any case, does not imply that the slowest ones are the best. The final choice depends on the problem at hand and on our computational resources.
-
-
-
-
-
-
-
