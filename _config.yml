@@ -25,7 +25,7 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
-paginate: 
+paginate: 20
 paginate_path: "/page/:num"
 
 sass:
