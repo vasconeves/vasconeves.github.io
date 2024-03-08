@@ -1,7 +1,7 @@
 ---
 layout: post
 title: High dimensional data reduction and visualization with an example - digit recognition
-image: "/pics/elephant.jpg"
+image: "/posts/digit_recognition_top.png"
 tags: [Python, scikit-learn, Dimension reduction, Visualization]
 mathjax: true
 ---
