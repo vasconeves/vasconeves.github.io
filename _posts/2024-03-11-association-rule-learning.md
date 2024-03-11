@@ -415,7 +415,6 @@ There appears to be *some* relationship between New Zealand wines and other New 
 
 New Zealand & Australia are often grouped together, but in terms of wine this wouldn't make sense - perhaps because of the difference climates the wines are very different and thus it wouldn't make sense to group wines by geographical proximity, but by preference instead.  This is only a hypothesis for now - we will need to take this back to the client and get their category experts to help us interpret it!
 
-
 <br>
 
 # Growth & Next Steps <a name="growth-next-steps"></a>
@@ -426,4 +425,4 @@ From there we will recommend applying this same logic to all other categories, a
 
 We will also propose the build of the "Keyword Search Engine" which will help Category Managers extract and utilise the insights held within the data.
 
-Top image was sourced from CLK-Art-N-Designs @ Deviantart | [https://www.deviantart.com/clk-art-n-designs/art/Celeb-Wine-Labels-208368100]https://www.deviantart.com/clk-art-n-designs/art/Celeb-Wine-Labels-208368100()
+Top image was sourced from CLK-Art-N-Designs @ Deviantart | [https://www.deviantart.com/clk-art-n-designs/art/Celeb-Wine-Labels-208368100](https://www.deviantart.com/clk-art-n-designs/art/Celeb-Wine-Labels-208368100)
