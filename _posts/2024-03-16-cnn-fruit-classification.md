@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Fruit Classification Using A Convolutional Neural Network
-image: "/posts/fruit_bouquet.jpg"
+image: "/posts/fruit_bouquet_small.jpg"
 tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]
 ---
 
@@ -1442,3 +1442,6 @@ The use of Transfer Learning with the VGG16 architecture was also a great succes
 The proof of concept was successful, we have shown that we can get very accurate predictions albeit on a small number of classes.  We need to showcase this to the client, discuss what it is that makes the network more robust, and then look to test our best networks on a larger array of classes.
 
 Transfer Learning has been a big success, and was the best performing network in terms of classification accuracy on the Test Set - however we still only trained for a small number of epochs so we can push this even further.  It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
+
+
+Top image sourced from: | [https://easy-peasy.ai/ai-image-generator/images/vibrant-fruit-bouquet-fresh-peaches-strawberries-oranges-bananas-pears](https://easy-peasy.ai/ai-image-generator/images/vibrant-fruit-bouquet-fresh-peaches-strawberries-oranges-bananas-pears)
