@@ -98,7 +98,7 @@ Multidimensional scaling (MDS) is a non-linear dimensionality reduction method t
 
 ### Classical MDS
 
-Let $x^{(1)},x^{(2)},...,x^{(n)} \in \mathbb{R}^p$ denote $n$ data points in $p$ dimensional space, and let the distance matrix $\mathbf{D} \in \mathbb{R}^{n\times n}$ consists of the elements of distances between each pair of the points, i.e. $d_{i,j} = \|{x^{(i)}-x^{(j)}}\|$.
+Let $x^{(1)},x^{(2)},...,x^{(n)} \in \mathbb{R}^p$ denote $n$ data points in $p$ dimensional space, and let the distance matrix $\mathbf{D} \in \mathbb{R}^{n\times n}$ consists of the elements of distances between each pair of the points, i.e. $d_{i,j} = \left| {x^{(i)}-x^{(j)}}\right|$.
 
 The objective of MDS is to find points $y^{(1)},...,y^{(n)}\in\mathbb{R}^q$ in a lower dimensional space ($q < p$), such that the sum of all pairwise distances
 
