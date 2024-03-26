@@ -108,7 +108,7 @@ $$
 
 is minimized.
 
-The resulting points $y^{1},...,y^{(n)}$ are called a lower-dimensional embedding of the original data points. 
+The resulting points $y^{(1)},...,y^{(n)}$ are called a lower-dimensional embedding of the original data points. 
 
 ### Weighted MDS
 
