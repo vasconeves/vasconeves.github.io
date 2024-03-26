@@ -164,9 +164,9 @@ $$
 q_{ij} = \frac{e^{-D_{ij}^2}}{\sum_{k\le l} e^{-D_{ij}^2}}, \text{ where } D_{ij}^2 = |\mathbf{y}^{(i)} - \mathbf{y}^{(j)}|^2,\ i \lt j.
 $$
 
-The set of all $q_{i,j} define the pmf of a probability distribution **Q** on all pairs of points in the q-dimensional target space.
+The set of all $q_{i,j}$ define the pmf of a probability distribution **Q** on all pairs of points in the q-dimensional target space.
 
-4. Minimization. Find the points $\mathbf{y}^{(i)}$ in the q-dimensional target space than minize the [Kullback-Leibler (KL) divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Interpretations) between the probability distributions **P** and **Q**,
+4. Minimization. Find the points $\mathbf{y}^{(i)}$ in the q-dimensional target space than minimize the [Kullback-Leibler (KL) divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence#Interpretations) between the probability distributions **P** and **Q**,
 
 $$
 KL(P||Q) = \sum_{i \ne j} p_{ij}\log{\frac{p_{ij}}{q_{ij}}},
@@ -193,16 +193,19 @@ In this example we will use data from a demo from the python package **scikit-le
 
 ### Loading the digits dataset
 
-First we load the digits and use only 6 digits (0 to 5) for clarity.
+First we load the digits and use only 6 digits (0 to 5) for clarity. The digits look like the ones shown in the following picture.
+
+![](/pics/sklearn_digits.png)
+
 
 ```python
 #Adapted from:
 #https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html
-# Authors: Fabian Pedregosa <fabian.pedregosa@inria.fr>
-#          Olivier Grisel <olivier.grisel@ensta.org>
-#          Mathieu Blondel <mathieu@mblondel.org>
+# Authors: Fabian Pedregosa 
+#          Olivier Grisel 
+#          Mathieu Blondel 
 #          Gael Varoquaux
-#          Guillaume Lemaitre <g.lemaitre58@gmail.com>
+#          Guillaume Lemaitre
 # License: BSD 3 clause (C) INRIA 2011
 
 from sklearn.datasets import load_digits
@@ -405,3 +408,4 @@ plt.show()
 - We could now establish some rules based, for instance, on the distance to the center of each cluster, to be able to read more hand-written numbers correctly.
 
 - We should also be aware of the time each algorithm spends looking for the best solution. In this case, it is clear that the fastest algorithms do not work well, which, in any case, does not imply that the slowest ones are the best. The final choice depends on the problem at hand and on our computational resources.
+- These approaches should be compared against deep learning methods (e.g. CNNs). This comparison may be a subject for a future post.
