@@ -6,11 +6,13 @@ tags: [Python, Clinical Trials, Statistics]
 mathjax: true
 ---
 
-In this post I will present two different types of clinical trials: a discrete variable example and a continuous variable example showcasing a few different approaches on how to tackle these kinds of problems. It is also a good opportunity to present some fundamental statistical concepts. Towards the end we will revisit the Mammography study using this time the likelihood ratio approach and the last section will highlight the importance of doing p-value corrections when dealing with multiple hypothesis.
-
+# Resume
 ---
 
+In this post I will present two different types of clinical trials: a discrete variable example and a continuous variable example showcasing a few different approaches on how to tackle these kinds of problems. It is also a good opportunity to present some fundamental statistical concepts. Towards the end we will revisit the Mammography study using this time the likelihood ratio approach and the last section will highlight the importance of doing p-value corrections when dealing with multiple hypothesis.
+
 # Mammography study - a discrete variable example
+---
 
 Here I will demonstrate how we can analyze data from observational studies using a mammography study as an example.
 
@@ -137,7 +139,7 @@ $$Power = 1-Type\ II\ error.$$
 
 **Note:** the power of a 1-sided test is usually higher than the power of a 2-sided test. Thus you should always use 1-sided tests when evaluating deviations that go in one direction only.
 
-The following plot shows a graphical depiction of the power of the test as well as the upper bound of the Type I error represented by $\alpha$. **The plot clearly shows the interplay between type I and type II errors: 
+The following plot shows a graphical depiction of the power of the test as well as the upper bound of the Type I error represented by $\alpha$. **The plot clearly shows the interplay between type I and type II errors**:
 
 ![](/pics/power.jpg)
 
@@ -180,6 +182,7 @@ Shortcomings:
 ---
 
 # Sleeping drug study - a continuous variable example
+---
 
 Let's now move on to a different study where we have a **continuous variable** as our variable of interest.
 
@@ -237,8 +240,8 @@ To answer this question we go through the following steps:
 
 1. Choose a model (Gaussian) and use the proper random variables ($Y_i = X_{drug}-X_{placebo}$).
 2. State the hypothesis (in this case is a one-sided test):
-    - H_0: $\mu = 0$.
-    - H_1: $\mu > 0$.
+    - $H_0$: $\mu = 0$.
+    - $H_1$: $\mu > 0$.
 3. Calculate the test statistic.
 
 We have, however, a problem. To calculate z we need to known the true value of the variance $\sigma$. Since we do not know the population variance, only the sample variance we cannot use this test.
@@ -296,9 +299,8 @@ A great feature of the $t_n$ distribution is that it introduces uncertainty due 
 
 **Note: as a rule of thumb, when the sample size $n \ge 30$ the t-distribution is already very similar to the normal distribution. At this threshold the normal approximation becomes (more) valid.**
 
----
-
 # Other basic statistical concepts
+---
 
 ## Testing the assumption of normality
 
@@ -381,9 +383,10 @@ plt.xlabel('Confidence interval'),plt.ylabel('simulation #')
 plt.ylim(-1,100)
 ```
 
----
+
 
 # A general approach: the likelihood ratio test
+---
 
 The likelihood ratio test is quite important because
 
@@ -521,9 +524,10 @@ plt.xlabel('X'),plt.ylabel('pdf')
 plt.legend()
 ```
 
----
+
 
 # Multiple hypothesis testing
+---
 
 So far we've seen cases for single hypothesis testing, but in the real world and in a lot of experiments there are at least a few variables that need to be taken into account.
 
