@@ -5,13 +5,12 @@ image: "/posts/lisbon-earthquake.jpg"
 tags: [Tableau, Data Viz]
 ---
 
-# Data Visualization tutorial - Creating a dynamic dashboard with Tableau
-
-## Resume
+# Resume
+---
 
 In this short tutorial I will show how to create a simple dynamic dashboard with Tableau. To this end I will use the Earthquake data originally sourced from a `.csv` file from the [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php) - past 30 days.
 
-### Goals
+## Goals
 
 Our prospective client ordered a dashboard with the following requirements:
 
@@ -21,13 +20,14 @@ Our prospective client ordered a dashboard with the following requirements:
 - At a more granular level (more detailed) it needs to show how many Earthquakes took place, their average magnitude, and the maximum magnitude. 
 - A single data filter is also requested so that it is possible to move the Earthquake data back and forth day by day, manually as well as sequentially.
 
-### Deliverables
+## Deliverables
 
 The first version of our product in its online version is shown below. 
 
 <iframe seamless frameborder="0" src="https://public.tableau.com/views/tableau_tutorial_earthquakes/Earthquakeanalyser?:embed=yes&:display_count=yes&:showVizHome=no" width = '1090' height = '900'></iframe>
 
-## Data
+# Data
+---
 
 Our data is comprised of 2228 Earthquake events all over the world, from 11/07/2022 to 10/08/2022. It is formatted in the `.csv` format and has 7 columns: id, datetime, latitude, longitude, Earthquake magnitude, location, and broader location.
 
@@ -42,6 +42,9 @@ First, we open Tableau, and then click on `File/New` or `ctrl+N`. This commands 
 From here we click on `Sheet 1` in the bottom left corner, where the mouse pointer is located, to go back to our worksheet. Now we have our data (`Tables`) in the left hand side of the window as shown below.
 
 ![](/img/earthquake_tracker/image-1.png)
+
+# Worksheets
+---
 
 ## First steps
 
@@ -224,7 +227,7 @@ and hit OK as shown below.
 
 ![](/img/earthquake_tracker/image-38.png)
 
-From here we drag the new variable to the Sheet. **However we immediately observe that Tableau is aggregating the maximum values by `Id` meaning that the Magnitude and Max Magnitude values are the same!**. To fix this let's create another calculated field called `Max Magnitude Fixed`. We now need to introduce the concept of **level of detail**. Basically this allows us to address which level of detail we want to include in our new variable. The sintax is the following:
+From here we drag the new variable to the Sheet. **However we immediately observe that Tableau is aggregating the maximum values by `Id` meaning that the Magnitude and Max Magnitude values are the same!**. To fix this let's create another calculated field called `Max Magnitude Fixed`. We now need to introduce the concept of **level of detail**. Basically this allows us to address which level of detail we want to include in our new variable. The syntax is the following:
 
     {TYPE [DIMENSION LIST]: AGGREGATION},
 
@@ -274,7 +277,8 @@ The result is shown below. **The two MAX fields are now calculated at the countr
 
 **It is worth noting that filters do not change any of the calculated values**.
 
-## Applied example - A client's request
+# Applied example - A client's request
+---
 
 Now that we've seen the basics let's apply what we've learned to a practical example.
 
@@ -288,7 +292,7 @@ Our client needs to understand and visualize global earthquake patterns, and is 
 
 Let's start! 
 
-### Best practices
+## Best practices
 
 Before moving on to the dashboard we should organize our data. Let's start by naming our worksheets. Let's call Sheet 1 as Earthquake Map, Sheet 2 as Location Chart Triple, and Sheet 3 as Calculated Fields Play.
 
@@ -296,9 +300,9 @@ To to this we just need to right-click on each of the Sheets and click on `renam
 
 ![](/img/earthquake_tracker/image-46.png)
 
-### Top 10 Largest Earthquakes Worksheet
+## Top 10 Largest Earthquakes Worksheet
 
-We still need a fourth Sheet which we will rename Top 10 Largest Earthquakes. First we will drag the `Id` variable into the Sheet and then the Magnitude variable. We also sort the magnitude values in descending order by clicking the sort button as shown in the Figure below.
+We also need a fourth Sheet which we will rename Top 10 Largest Earthquakes. First we will drag the `Id` variable into the Sheet and then the Magnitude variable. We also sort the magnitude values in descending order by clicking the sort button as shown in the Figure below.
 
 ![](/img/earthquake_tracker/image-47.png)
 
@@ -328,7 +332,7 @@ We still need to filter by date. To do this, we just need to drag the `Datetime`
 
 ![](/img/earthquake_tracker/image-53.png)
 
-### Percentage of Earthquakes by Broad Location
+## Percentage of Earthquakes by Broad Location
 
 One of the requirements of our client was to display the percentage of Earthquakes by broad location. To do this we will create a fifth worksheet named % of Earthquakes by Location Broad. After creating the sheet we drag the `Location-Broad` variable onto the row sheet section. As we're interested in Earthquake frequencies we will need a counter. We already have a counter field created, therefore we just need to drag the `Earthquake Counter` field into the worksheet at the right of the `Location-Broad` variable. We should also sort the column by descending order as shown in the Picture below.
 
@@ -350,7 +354,7 @@ To finish we just need to add the `Datetime` variable as before as a slider.
 
 ![](/img/earthquake_tracker/image-58.png)
 
-### The dashboard - first steps
+## The dashboard - first steps
 
 To create our dashboard we first need to create a blank one. To do this we click on `+` sign with a grid located at the bottom center of the window as shown below.
 
@@ -360,7 +364,7 @@ First we change the `Size` field on the left hand side of the Window to `automat
 
 At the `Sheets` field, also on the left, we see the worksheets we created. **Is is worth noting the importance of creating a clear labelling here**. At the bottom left of the screen we have a field called `Objects` which are elements we can use to create our dashboard. At the bottom of the `Objects` field we have the buttons `Tiled` and `Floating`. When Tiled is on it means that the elements snap into place, more or less where we dropped them. Floating, on the other hand, means that we have full control of the position of the elements, which will hover above the window.
 
-Let's first name our Dashboard. To do this we just need to right-click on `Dashboard 1` button at the bottom of the Window and then click on `Rename`. Let's call it *Earthquake Analyser*. 
+Let's first name our Dashboard. To do this we just need to right-click on `Dashboard 1` button at the bottom of the Window and then click on `Rename`. Let's call it *Earthquake Analyzer*. 
 
 Let's first summarize what we need and make a draft of the Dashboard by hand as shown below.
 
@@ -375,7 +379,7 @@ We need:
 - Frequency, average and maximum magnitudes by location
 - All data should be attached to a general date filter
 
-### Building the dashboard
+## Building the dashboard
 
 Let's start with the title. To insert the dashboard title we click on `Show dashboard title` button located at the bottom left corner of the screen. We want the title centered so we right click on the title field and click on `Format title` and then click on `Alignment/Center`.
 
@@ -397,7 +401,7 @@ The end result is shown in the following Figure.
 
 If we experiment changing the data **we notice that the bar plots change with the data but the map does not**. This is because the legend is tied to the `Location Chart Triple`. **We will take care of this at the end**.
 
-We will now drag the `Top 10 Largest Earthquakes` sheet to the left of the map and to the top of the triple charts. Then, we will also drag the `% of Earthquakes by Location Broad to the right of the map and to the top of the triple chart. The end result is shown below. **We should also remove the two new legend that appeard on the right hand side of the screen.**
+We will now drag the `Top 10 Largest Earthquakes` sheet to the left of the map and to the top of the triple charts. Then, we will also drag the `% of Earthquakes by Location Broad to the right of the map and to the top of the triple chart. The end result is shown below. **We should also remove the two new legend that appeared on the right hand side of the screen.**
 
 ![](/img/earthquake_tracker/image-65.png)
 
@@ -409,7 +413,7 @@ In the new windows, just click on `Select all on dashboard` and then OK. Finally
 
 ![](/img/earthquake_tracker/image-67.png)
 
-We will now format the dashboard a little to make it more attractive to the end user. To do this we first head to the menu and click on `Format/Dasboard`. The format dashboard box appears on the left of the screen. In this section we change the `Dashboard shading` to black and the `Dashboard title` font and the `Worksheet titles` to white. The end result is shown below.
+We will now format the dashboard a little to make it more attractive to the end user. To do this we first head to the menu and click on `Format/Dashboard`. The format dashboard box appears on the left of the screen. In this section we change the `Dashboard shading` to black and the `Dashboard title` font and the `Worksheet titles` to white. The end result is shown below.
 
 ![](/img/earthquake_tracker/image-68.png)
 
@@ -449,7 +453,7 @@ We can also optionally remove the vertical grid bars by clicking in the `Lines` 
 
 ![](/img/earthquake_tracker/image-76.png)
 
-### Finishing touches
+## Finishing touches
 
 We will now apply some finishing touches to our dashboard to make it more appealing to the stakeholders. We start by right-clicking on the title and selecting `Edit Title`. Then, we first select all the text in the box and then choose a font with size 24 and boldface. To finish we click OK.
 
@@ -457,7 +461,7 @@ We will now apply some finishing touches to our dashboard to make it more appeal
 
 ![](/img/earthquake_tracker/image-77.png)
 
-From here we just drag the floating object to fit on the top right corner of the dashboard after removing the legend section where the filter was previously located. The dashboard adapts dynamically and expands to the new space. **We notice that our floating object does not have enough space to fit up there in the corner so we need to expand the title window a little bit further down.** Once that is done, we can also expand the timedate filter to cover the width of the table just below for aesthetic reasons.
+From here we just drag the floating object to fit on the top right corner of the dashboard after removing the legend section where the filter was previously located. The dashboard adapts dynamically and expands to the new space. **We notice that our floating object does not have enough space to fit up there in the corner so we need to expand the title window a little bit further down.** Once that is done, we can also expand the date filter to cover the width of the table just below for aesthetic reasons.
 
 We will now finish the dashboard off by adding the logo of our fictional client, [Earthscope Consortium](the https://www.earthscope.org/). To do this we download the logo at [https://ds.iris.edu/seismon/imgs/esc_logo2_rgb.svg](https://ds.iris.edu/seismon/imgs/esc_logo2_rgb.svg) and place it on the top left corner of the dashboard as a floating object. To do this, we go to the `Objects` field on the bottom left corner of the Screen and click on the `Floating` box. Then, we drag `/img/earthquake_tracker/image` to somewhere near the top left corner of the screen and then select `Choose` when the pop-up window appears. We select the downloaded /img/earthquake_tracker/image and hit OK. Then we move the picture to its final location.
 
