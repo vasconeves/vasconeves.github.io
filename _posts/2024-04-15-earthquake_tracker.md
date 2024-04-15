@@ -27,13 +27,15 @@ The first version of our product in its online version is shown below.
 
 <iframe seamless frameborder="0" src="https://public.tableau.com/views/tableau_tutorial_earthquakes/Earthquakeanalyser?:language=pt-BR&publish=yes&:sid=&:display_count=n&:origin=viz_share_link" width = '1090' height = '900'></iframe>
 
+<div class='tableauPlaceholder' id='viz1713195898572' style='position: relative'><noscript><a href='#'><img alt='Earthquake analyser ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ta&#47;tableau_tutorial_earthquakes&#47;Earthquakeanalyser&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='tableau_tutorial_earthquakes&#47;Earthquakeanalyser' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ta&#47;tableau_tutorial_earthquakes&#47;Earthquakeanalyser&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='pt-BR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1713195898572');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1427px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
 ## Data
 
 Our data is comprised of 2228 Earthquake events all over the world, from 11/07/2022 to 10/08/2022. It is formatted in the `.csv` format and has 7 columns: id, datetime, latitude, longitude, Earthquake magnitude, location, and broader location.
 
 The Figure below shows the first 10 rows of the data in Excel.
 
-![](//earthquake-tracker/table1.PNG)
+![](/earthquake-tracker/table1.PNG)
 
 First, we open Tableau, and then click on `File/New` or `ctrl+N`. This commands creates a new Tableau sheet. To import our data, we just click on `Data/New Data Source` or `ctrl+D` and then select `Text file` and then the file itself. This will connect our sheet with the new data. The Tableau window should look like the one below.
 
