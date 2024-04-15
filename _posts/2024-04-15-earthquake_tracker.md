@@ -25,7 +25,7 @@ Our prospective client ordered a dashboard with the following requirements:
 
 The first version of our product in its online version is shown below. 
 
-<iframe seamless frameborder="0" src="https://public.tableau.com/app/profile/vasco.neves/viz/tableau_tutorial_earthquakes/Earthquakeanalyser?publish=yes" width = '1090' height = '900'></iframe>
+<iframe seamless frameborder="0" src="https://public.tableau.com/views/tableau_tutorial_earthquakes/Earthquakeanalyser?:language=pt-BR&publish=yes&:sid=&:display_count=n&:origin=viz_share_link" width = '1090' height = '900'></iframe>
 
 ## Data
 
