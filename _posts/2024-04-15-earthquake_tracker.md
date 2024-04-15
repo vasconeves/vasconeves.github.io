@@ -467,7 +467,7 @@ We will now finish the dashboard off by adding the logo of our fictional client,
 
 We will now just center the titles of all worksheets except the bottom one. For instance, to center the `Top 10 Largest Earthquakes` table we just right-click on the title and select `Edit title`. We then click on the center text icon and click OK. We do the same for the `Earthquake Map` and for the `% of Earthquakes by Broad location`.
 
-We also center the `Location Chart triple` title but this time we will change the title label to *Location analysis: Frequency | Average Magnitude | Maximum Magnitude* and click OK. The following picture shows all the work done so far.
+We also center the `Location Chart triple` title but this time we will change the title label to *Location analysis: Frequency \| Average Magnitude \| Maximum Magnitude* and click OK. The following picture shows all the work done so far.
 
 ![](/img/earthquake_tracker/image-78.png)
 
