@@ -483,7 +483,7 @@ And that's it we are finished! I think our client will be most pleased! The fina
 
 ![](/img/earthquake_tracker/image-81.png)
 
-
+Top image sourced from: | [1755 Lisbon Earthquake wikipedia page](https://en.wikipedia.org/wiki/1755_Lisbon_earthquake)
 
 
 
